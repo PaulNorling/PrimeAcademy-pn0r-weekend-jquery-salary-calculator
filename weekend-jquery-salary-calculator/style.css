@@ -45,4 +45,6 @@ table {
     text-align: right;
     font-size: 30px;
   }
-  
+  .overbudget {
+    background-color: red;
+  }

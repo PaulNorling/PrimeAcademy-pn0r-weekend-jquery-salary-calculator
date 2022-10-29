@@ -40,6 +40,7 @@ function addEmployee() {
   manPower.push(employee);
   // add to array
 render();
+changeBackground();
   // anything else?
 
 }
@@ -76,7 +77,6 @@ function render() {
 }
 
 function removeEmployee(){
-  console.log('in removeCar')
   //remove emplyee and salary from totalmonthluy
   for(let employee of manPower){
     if (employee.id2 == $(this).attr("id")){
@@ -88,6 +88,10 @@ function removeEmployee(){
   }
   render();
 }
+//change background color to red over 20000
 
-
-
+function changeBackground(){
+  if(totalMonthly > 20000){
+    $('footer').addClass('overbudget');
+  }
+}
