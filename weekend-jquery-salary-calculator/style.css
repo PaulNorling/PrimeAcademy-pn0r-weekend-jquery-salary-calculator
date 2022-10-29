@@ -1,0 +1,49 @@
+h1{
+    
+    color:white;
+    text-align: center;
+    background-color: gray;
+    height: 100px;
+}
+table {
+    font-size: 18px;
+    
+    
+}
+
+body {
+    outline: 2px solid black;
+}
+th {
+    padding: 20px;
+    
+    width: 300px;
+    background-color: lightgray;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 20px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .textBox {
+   width: 150px;
+   height: 40px;
+  }
+  
