@@ -1,4 +1,4 @@
-let garage = [];
+let manPower = [];
 
 let idAssigner = 0;
 
@@ -9,32 +9,32 @@ $(document).ready(readyNow);
 function readyNow() {
   console.log("DOM is loaded!");
 
-  $('#submitBtn').on('click', addNewCar);
-  $('#carsInGarage').on('click','.removeBtn' ,removeCar);
+  $('#submitBtn').on('click', addEmployee);
+  $('#carsInGarage').on('click','.removeBtn' ,removeEmployee);
   // add click event handler that calls the addNewCar function
 
 }
 
-function addNewCar() {
+function addEmployee() {
   idAssigner++;
   
-  car = {
-    year: $('#yearInput').val(),
-    make: $('#makeInput').val(),
-    model: $('#modelInput').val(),
-    make: $('#makeInput').val(),
-    model: $('#modelInput').val(),
+  employee = {
+    year: $('#firstNameInput').val(),
+    make: $('#lastNameInput').val(),
+    model: $('#IdInput').val(),
+    make: $('#TitleInput').val(),
+    model: $('#annualSalaryInput').val(),
     id: idAssigner,
    } 
    
-   $('#yearInput').val('')
-   $('#makeInput').val('')
-   $('#modelInput').val('')
-   $('#makeInput').val('')
-   $('#modelInput').val('')
+   $('#firstNameInput').val('')
+   $('#lastNameInput').val('')
+   $('#IdInput').val('')
+   $('#TitleInput').val('')
+   $('#annualSalaryInput').val('')
 
   // get input values
-  garage.push(car);
+  manPower.push(employee);
   // add to array
 render();
   // anything else?
@@ -50,15 +50,16 @@ function render() {
   //$('#carsInGarage').append('<ul>Year Make Model</ul>')
   //add new content
       //loop through array
-  for(let car of garage)  {
+  for(let employee of manPower)  {
       $('#carsInGarage').append(`
-      <li>
-       ${car.year}
-       ${car.make} 
-       ${car.model}
-       ${car.make} 
-       ${car.model} 
-       <button class="removeBtn"id="${car.id}">remove car</button></li>
+      <table>
+       <td>${employee.year}</td>
+       <td>${employee.make}</td> 
+       <td>${employee.model}</td>
+       <td>${employee.make}</td>
+       <td>${employee.model}</td> 
+       <td><button class="removeBtn"id="${employee.id}">Delete</button></td>
+       </table>
       `)
       //append to each post to DOM
       
@@ -66,14 +67,14 @@ function render() {
       
 }
 
-function removeCar(){
+function removeEmployee(){
   console.log('in removeCar')
   //remove car from garage
-  for(let car of garage){
-    if (car.id == $(this).attr("id")){
-      console.log("found it",car)
-      garage.splice(garage.indexOf(car),1);
-      console.log(garage);
+  for(let employee of manPower){
+    if (employee.id == $(this).attr("id")){
+      console.log("found it",employee)
+      manPower.splice(manPower.indexOf(employee),1);
+      console.log(manPower);
     }
   }
   render();
