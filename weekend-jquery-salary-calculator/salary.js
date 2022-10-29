@@ -2,15 +2,15 @@ let manPower = [];
 
 let idAssigner = 0;
 
+let totalMonthly = 0;
+
 $(document).ready(readyNow);
-
-
 
 function readyNow() {
   console.log("DOM is loaded!");
 
   $('#submitBtn').on('click', addEmployee);
-  $('#carsInGarage').on('click','.removeBtn' ,removeEmployee);
+  $('#peopleEmployed').on('click','.removeBtn' ,removeEmployee);
   // add click event handler that calls the addNewCar function
 
 }
@@ -19,12 +19,12 @@ function addEmployee() {
   idAssigner++;
   
   employee = {
-    year: $('#firstNameInput').val(),
-    make: $('#lastNameInput').val(),
-    model: $('#IdInput').val(),
-    make: $('#TitleInput').val(),
-    model: $('#annualSalaryInput').val(),
-    id: idAssigner,
+    first: $('#firstNameInput').val(),
+    last: $('#lastNameInput').val(),
+    id: $('#IdInput').val(),
+    title: $('#TitleInput').val(),
+    salary: $('#annualSalaryInput').val(),
+    id2: idAssigner,
    } 
    
    $('#firstNameInput').val('')
@@ -32,6 +32,9 @@ function addEmployee() {
    $('#IdInput').val('')
    $('#TitleInput').val('')
    $('#annualSalaryInput').val('')
+    
+   // add new employee salary to total monthly:
+   totalMonthly += parseInt(employee.salary);
 
   // get input values
   manPower.push(employee);
@@ -41,40 +44,46 @@ render();
 
 }
 
-
-
 function render() {
   //update html
   //target posts table
-  $('#carsInGarage').empty();
+  $('.total').empty();
+  $('#peopleEmployed').empty();
   //$('#carsInGarage').append('<ul>Year Make Model</ul>')
   //add new content
       //loop through array
   for(let employee of manPower)  {
-      $('#carsInGarage').append(`
+      $('#peopleEmployed').append(`
       <table>
-       <td>${employee.year}</td>
-       <td>${employee.make}</td> 
-       <td>${employee.model}</td>
-       <td>${employee.make}</td>
-       <td>${employee.model}</td> 
-       <td><button class="removeBtn"id="${employee.id}">Delete</button></td>
+       <td>${employee.first}</td>
+       <td>${employee.last}</td> 
+       <td>${employee.id}</td>
+       <td>${employee.title}</td>
+       <td>${employee.salary}</td> 
+       <td><button class="removeBtn"id="${employee.id2}">Delete</button></td>
        </table>
       `)
       //append to each post to DOM
       
   }
+      console.log(totalMonthly);  // .append makes a list, i want to just update total monthly. .data()
       
+     // $( ".total" ).data( { totalMonthly } ).data()
+      
+      $('.total').append(`  
+    ${totalMonthly}
+    `)    
 }
 
 function removeEmployee(){
   console.log('in removeCar')
-  //remove car from garage
+  //remove emplyee and salary from totalmonthluy
   for(let employee of manPower){
-    if (employee.id == $(this).attr("id")){
+    if (employee.id2 == $(this).attr("id")){
       console.log("found it",employee)
       manPower.splice(manPower.indexOf(employee),1);
       console.log(manPower);
+      totalMonthly -= parseInt(employee.salary); 
     }
   }
   render();
@@ -82,119 +91,3 @@ function removeEmployee(){
 
 
 
-
-
-
-
-
-//  console.log($('.delete-btn').parent().siblings())
-
-//  let posts = [];
-
-//  $(document).ready(onReady);
-
-//  function onReady()  {
-//      console.log('jq')
-//      $('#submitBtn').on('click', onSubmitPost);
-//      $('#postsTable').on('click','.delete-btn' ,onDelete);
-//      render();
-//  }
-
-// function onSubmitPost() {
-//     // Update state....
-//     // collect input values
-// //    let thing = $('.containers').val();
-// //    console.log(thing);
-//    let post = {
-//     firstName: $('#firstNameInput').val(),
-//     lastName: $('#lastNameInput').val(),
-//     id: $('#idInput').val(),
-//     title: $('#titleInput').val(),
-//     annualSalary: $('#annualSalaryInput').val(),
-//     }
-//     render();
-//     posts.push(post);
-//     console.log(posts);
-// }
-
-
-//   function render() {
-// //     //update html
-// //     //target posts table
-//      $("#postsTable").empty();
-     
-    
-// //     
-// //     //add new content
-// //         //loop through array
-//      for(let post of posts)  {
-// //         //append each post to DOM
-//         $('#postsTable').append(`
-//             <tr>
-//               <td>${post.firstName}</td>
-//               <td>${post.lastName}</td>
-//               <td>${post.id}</td>
-//               <td>${post.title}</td>
-//               <td>${post.annualSalary}</td>
-//               <td>
-//                   <button class="delete-btn">
-//                       Delete
-//                   </button>
-//               </td>
-//             </tr>
-//         `)
-//     }
-        
-//  }
-
-// // function onDelete()  {
-// //     let newPosts = [];  //will hold posts we still want
-// //     console.log('in onDelete()')
-// //     console.log($(this));
-// //     //figure out which delete button was clicked
-// //     //$(this) is the specific element theat was clicked
-// //     let contentToDelete = $(this) //  $(this) the delete button
-// //         .parent()           // the <td> in which the button lives
-// //         .siblings()         // all <td> in that row
-// //         .first()            // the first of those <td>s
-// //         .text();
-
-// //     //     console.log('content to delete:', contentToDelete)
-
-// //         for (let post of posts) {
-// //             // add items that dont match contentToDelete variable into new array
-// //           if (post.content !== contentToDelete) {
-// //               newPosts.push(post);
-// //           }
-// //         }
-
-// //         posts = newPosts;
-
-// //         render();
-// // }
-
-// function onDelete()  {
-//     let newPosts = [];  //will hold posts we still want
-//     console.log('in onDelete()')
-
-//     //figure out which delete button was clicked
-//     //$(this) is the specific element theat was clicked
-//     let contentToDelete = $(this) //  $(this) the delete button
-//         .parent()           // the <td> in which the button lives
-//         .siblings()         // all <td> in that row
-//         .first()            // the first of those <td>s
-//         .text();
-
-//         console.log('content to delete:', contentToDelete)
-
-//         for (let post of posts) {
-//             // add items that dont match contentToDelete variable into new array
-//           if (post.content !== contentToDelete) {
-//               newPosts.push(post);
-//           }
-//         }
-
-//         posts = newPosts;
-
-//         render();
-// }

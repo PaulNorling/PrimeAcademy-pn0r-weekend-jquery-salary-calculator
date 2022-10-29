@@ -5,14 +5,11 @@ h1{
     background-color: gray;
     height: 100px;
 }
-table {
-    font-size: 18px;
-    
-    
-}
+
 
 body {
     outline: 2px solid black;
+    font-family:sans-serif;
 }
 th {
     padding: 20px;
@@ -21,9 +18,6 @@ th {
     background-color: lightgray;
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
 
 
 table {
@@ -39,11 +33,16 @@ table {
     padding: 20px;
   }
   
-  tr:nth-child(even) {
+  table:nth-child(even) {
     background-color: #dddddd;
   }
   .textBox {
    width: 150px;
    height: 40px;
+  }
+  footer {
+    height:65px;
+    text-align: right;
+    font-size: 30px;
   }
   
