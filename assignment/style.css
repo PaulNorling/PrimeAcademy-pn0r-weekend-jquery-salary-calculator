@@ -20,13 +20,13 @@ h1{
 }
 
 input  {
-    width: 200px;
+    width: 250px;
     height: 40px;
     font-size: 20px;
     margin: 4px;
     border: 1.5px solid black;
     padding-left: 4px;
- }
+}
 
 input::placeholder {
     font-size: 20px;
@@ -42,7 +42,7 @@ input::placeholder {
     font-size: 20px;
     border: 1.5px solid black;
     border-radius: 7px;
-    margin-right: 25px;
+    margin-right: 70px;
     margin-top: 10px;
 }
 
@@ -51,7 +51,7 @@ input::placeholder {
     font-size: 20px;
     border: 1.5px solid black;
     border-radius: 7px;
-    margin-left: 40px;
+    margin-left: 70px;
 }
 
 table {
@@ -67,7 +67,7 @@ table {
 th {
     height: 50px;
     width: 100%;
-    background-color: #dddddd;
+
     border: 1px solid rgba(0, 0, 0, 0.8);
     text-align: left;
 }

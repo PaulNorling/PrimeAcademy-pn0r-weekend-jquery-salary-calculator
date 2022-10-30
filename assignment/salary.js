@@ -14,6 +14,7 @@ function readyNow() {
   
 }
 function addEmployee() {
+  
   idAssigner++;
   
   employee = {
@@ -32,10 +33,12 @@ function addEmployee() {
     
    if(employee.salary>0){
    totalMonthly += parseInt(employee.salary);
-  }
+  }else employee.salary=0;
+
   manPower.push(employee);
-render();
-}
+  render();
+  }
+
 
 function render() {
   changeBackground();
@@ -43,19 +46,17 @@ function render() {
   $('#peopleEmployed').empty();
   for(let employee of manPower)  {
     $('#peopleEmployed').append(`
-      <tr>
+      <table>
          <td style="width:15%">${employee.first}</td>
          <td style="width:15%">${employee.last}</td> 
          <td style="width:10%">${employee.id}</td>
          <td style="width:20%">${employee.title}</td>
-         <td style="width:15%">$${employee.salary}</td> 
+         <td style="width:15%">$${parseInt(employee.salary).toLocaleString()}</td> 
          <td style="width:15%"><button class="removeBtn"id="${employee.id2}">Delete</button></td>
-       </tr>
+       </table>
     `)
   }
-  $('.total').append(`  
-    ${totalMonthly}
-    `)    
+  $('.total').append(`${totalMonthly.toLocaleString()}`)    
 }
 
 function removeEmployee(){
@@ -78,4 +79,3 @@ function changeBackground(){
   }else
     $('footer').removeClass('overbudget');
 }
- 
