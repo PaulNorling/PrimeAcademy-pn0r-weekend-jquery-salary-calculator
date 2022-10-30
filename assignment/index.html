@@ -10,69 +10,58 @@
     <script src="salary.js"></script>
 </head>
 <body>
+<header>
   <h1>Salary Calculator</h1>
-  <h2>Add Employee</h2>
-  <div>
-    <label for="firstNameInput">
-        First
-    </label>
+</header>
+<h2>Add Employee</h2>
+  <form class ="employeeInfo">
     <input
+        placeholder="First Name"
         id="firstNameInput"
         type="text"
     />
-
-    <label for="lastNameInput">
-        Last
-    </label>
     <input
+        placeholder="Last Name"
         id="lastNameInput"
         type="text"
     />
-
-    <label for="IdInput">
-        Id
-    </label>
     <input
+        placeholder="Id"
         id="IdInput"
         type="text"
     />
-
-    <label for="TitleInput">
-        Title
-    </label>
     <input
+        placeholder="Title"
         id="TitleInput"
         type="text"
     />
-
-    <label for="annualSalaryInput">
-        Annual Salary
-    </label>
     <input
+        placeholder="Annual Salary"
         id="annualSalaryInput"
         type="number"
     />
-</div>
-
-  <button type="submit" id="submitBtn">Submit</button>
-  <h2>Employees</h2>
-  <table>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Annual Salary</th>
-        <th></th>
+  </form>
+<section>
+  <button style="float: right;" type="submit" id="submitBtn">Submit</button>
+</section>
+<h2 class="employees">Employees</h2>
+<table id="top">
+  <tr>
+    <td style="width:15%">First Name</td>
+    <td style="width:15%">Last Name</td>
+    <td style="width:10%">ID</td>
+    <td style="width:20%">Title</td>
+    <td style="width:15%">Annual Salary</td>
+    <td style="width:15%"></td>
+  </tr>
 </table>
-  <table id="peopleEmployed">
-  </table>
-  <table>
+<table id="peopleEmployed">
+</table>
+<table>
     <th></th>
-  </table>
+</table>
 </body>
-<footer class ="underbudget">
-    Total Monthly:
-    <output class ="total"></output>
+<footer>
+  Total Monthly: $ <output class ="total"></output>
 </footer>
 </html>

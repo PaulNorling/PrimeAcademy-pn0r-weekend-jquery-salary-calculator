@@ -9,12 +9,10 @@ $(document).ready(readyNow);
 function readyNow() {
   console.log("DOM is loaded!");
 
-  $('#submitBtn').on('click', addEmployee);
+  $('#submitBtn').on('click', addEmployee);  //event handlers
   $('#peopleEmployed').on('click','.removeBtn' ,removeEmployee);
-  // add click event handler that calls the addNewCar function
-
+  
 }
-
 function addEmployee() {
   idAssigner++;
   
@@ -25,73 +23,59 @@ function addEmployee() {
     title: $('#TitleInput').val(),
     salary: $('#annualSalaryInput').val(),
     id2: idAssigner,
-   } 
-   
+   }
    $('#firstNameInput').val('')
    $('#lastNameInput').val('')
    $('#IdInput').val('')
    $('#TitleInput').val('')
    $('#annualSalaryInput').val('')
     
-   // add new employee salary to total monthly:
+   if(employee.salary>0){
    totalMonthly += parseInt(employee.salary);
-
-  // get input values
+  }
   manPower.push(employee);
-  // add to array
 render();
-changeBackground();
-  // anything else?
-
 }
 
 function render() {
-  //update html
-  //target posts table
+  changeBackground();
   $('.total').empty();
   $('#peopleEmployed').empty();
-  //$('#carsInGarage').append('<ul>Year Make Model</ul>')
-  //add new content
-      //loop through array
   for(let employee of manPower)  {
-      $('#peopleEmployed').append(`
-      <table>
-       <td>${employee.first}</td>
-       <td>${employee.last}</td> 
-       <td>${employee.id}</td>
-       <td>${employee.title}</td>
-       <td>${employee.salary}</td> 
-       <td><button class="removeBtn"id="${employee.id2}">Delete</button></td>
-       </table>
-      `)
-      //append to each post to DOM
-      
+    $('#peopleEmployed').append(`
+      <tr>
+         <td style="width:15%">${employee.first}</td>
+         <td style="width:15%">${employee.last}</td> 
+         <td style="width:10%">${employee.id}</td>
+         <td style="width:20%">${employee.title}</td>
+         <td style="width:15%">$${employee.salary}</td> 
+         <td style="width:15%"><button class="removeBtn"id="${employee.id2}">Delete</button></td>
+       </tr>
+    `)
   }
-      console.log(totalMonthly);  // .append makes a list, i want to just update total monthly. .data()
-      
-     // $( ".total" ).data( { totalMonthly } ).data()
-      
-      $('.total').append(`  
+  $('.total').append(`  
     ${totalMonthly}
     `)    
 }
 
 function removeEmployee(){
-  //remove emplyee and salary from totalmonthluy
   for(let employee of manPower){
     if (employee.id2 == $(this).attr("id")){
       console.log("found it",employee)
       manPower.splice(manPower.indexOf(employee),1);
       console.log(manPower);
+      if(employee.salary>0){
       totalMonthly -= parseInt(employee.salary); 
+      }
     }
   }
   render();
 }
-//change background color to red over 20000
 
 function changeBackground(){
-  if(totalMonthly > 20000){
+  if(totalMonthly >= 20000){
     $('footer').addClass('overbudget');
-  }
+  }else
+    $('footer').removeClass('overbudget');
 }
+ 
