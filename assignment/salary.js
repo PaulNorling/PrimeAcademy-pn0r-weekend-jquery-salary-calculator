@@ -46,14 +46,16 @@ function render() {
   $('#peopleEmployed').empty();
   for(let employee of manPower)  {
     $('#peopleEmployed').append(`
-      <table>
+      
+        <tr>
          <td style="width:15%">${employee.first}</td>
          <td style="width:15%">${employee.last}</td> 
          <td style="width:10%">${employee.id}</td>
          <td style="width:20%">${employee.title}</td>
          <td style="width:15%">$${parseInt(employee.salary).toLocaleString()}</td> 
          <td style="width:15%"><button class="removeBtn"id="${employee.id2}">Delete</button></td>
-       </table>
+        </tr>
+      
     `)
   }
   $('.total').append(`${totalMonthly.toLocaleString()}`)    
