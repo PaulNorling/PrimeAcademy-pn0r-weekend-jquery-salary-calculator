@@ -13,6 +13,7 @@ function readyNow() {
   $('#peopleEmployed').on('click','.removeBtn' ,removeEmployee);
   
 }
+
 function addEmployee() {
   
   idAssigner++;
@@ -64,7 +65,6 @@ function render() {
 function removeEmployee(){
   for(let employee of manPower){
     if (employee.id2 == $(this).attr("id")){
-      console.log("found it",employee)
       manPower.splice(manPower.indexOf(employee),1);
       console.log(manPower);
       if(employee.salary>0){

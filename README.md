@@ -1,9 +1,6 @@
-# Project Name
+# Salary calculator
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
-
-## Description
 
 Your project description goes here. What problem did you solve? How did you solve it?
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+I built a webpage that databases employee salary. i put together an html, css and javascript file that can take in the data and store it in a table.     
